@@ -1,7 +1,7 @@
 package com.ashokgelal.samaya;
 
-import hirondelle.date4j.DateTime.DayOverflow;
-import hirondelle.date4j.DateTime.Unit;
+import com.ashokgelal.samaya.DateTime.DayOverflow;
+import com.ashokgelal.samaya.DateTime.Unit;
 
 
 /**
