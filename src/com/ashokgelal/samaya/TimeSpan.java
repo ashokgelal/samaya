@@ -254,11 +254,4 @@ public class TimeSpan{
     }
 
     private static final String TRAILING_ZEROS = "0000000";
-
-
-    private static String format(String pattern, double value)
-    {
-        DecimalFormat formatter = new DecimalFormat(pattern);
-        return formatter.format(value);
-    }
 }
