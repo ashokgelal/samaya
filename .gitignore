@@ -1,5 +1,4 @@
 .project
 .settings
 .classpath
-bin/hirondelle/date4j/*.class
-bin/com/ashokgelal/samaya/*.class
+bin/*
