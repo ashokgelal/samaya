@@ -1,4 +1,4 @@
-package hirondelle.date4j;
+package com.ashokgelal.samaya;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

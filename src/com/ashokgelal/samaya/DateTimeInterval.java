@@ -1,4 +1,4 @@
-package hirondelle.date4j;
+package com.ashokgelal.samaya;
 
 import hirondelle.date4j.DateTime.DayOverflow;
 import hirondelle.date4j.DateTime.Unit;

@@ -1,4 +1,4 @@
-package hirondelle.date4j;
+package com.ashokgelal.samaya;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,7 +19,8 @@ import java.util.TimeZone;
 <P>This class can hold :
 <ul>   
   <li>a date-and-time : <tt>1958-03-31 18:59:56.123456789</tt>   
-  <li>a date only : <tt>1958-03-31</tt>  <li>a time only : <tt>18:59:56.123456789</tt>
+  <li>a date only : <tt>1958-03-31</tt>
+  <li>a time only : <tt>18:59:56.123456789</tt>
 </ul>
 
  <P>
@@ -299,7 +300,7 @@ import java.util.TimeZone;
  When a <tt>DateTime</tt> is passed as a parameter to an SQL statement, the <tt>DateTime</tt> can always
  be formatted into a <tt>String</tt> of a form accepted by the database, using one of the <tt>format</tt> methods.
  */
-public final class DateTime implements Comparable<DateTime>, Serializable {
+public class DateTime implements Comparable<DateTime>, Serializable {
 
   /** The seven parts of a <tt>DateTime</tt> object. The <tt>DAY</tt> represents the day of the month (1..31), not the weekday. */
   public enum Unit {
