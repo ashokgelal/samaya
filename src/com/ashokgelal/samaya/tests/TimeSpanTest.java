@@ -2,9 +2,6 @@ package com.ashokgelal.samaya.tests;
 
 import com.ashokgelal.samaya.TimeSpan;
 import org.junit.Test;
-import sun.nio.cs.ext.ISO_8859_11;
-
-import java.sql.Time;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
@@ -213,13 +210,13 @@ public class TimeSpanTest {
         assertEquals(0, time3.Milliseconds());
     }
 
-    //@Test
+    @Test
     public void Test_For_Static_TimeSpan_Subtraction(){
         TimeSpan time1 = new TimeSpan(1, 0, 56, 0);
         TimeSpan time2 = new TimeSpan(12, 0, 0);
         TimeSpan time3 = TimeSpan.Subtract(time1, time2);
 
-        assertEquals(1, time3.Days());
+        assertEquals(0, time3.Days());
         assertEquals(12, time3.Hours());
         assertEquals(56, time3.Minutes());
         assertEquals(0, time3.Seconds());
