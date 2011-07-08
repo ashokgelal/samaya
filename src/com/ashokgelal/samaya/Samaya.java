@@ -96,4 +96,12 @@ public class Samaya extends DateTime{
         DateTime time = Samaya.now(TimeZone.getDefault());
         return new Samaya(time);
     }
+
+    public long Milliseconds() {
+        return getMilliseconds(TimeZone.getDefault());
+    }
+
+    public Integer Hour() {
+        return getHour();
+    }
 }
