@@ -1,10 +1,12 @@
 package com.ashokgelal.samaya;
 
+import java.util.Calendar;
 import java.util.TimeZone;
 
 public class Samaya extends DateTime{
-    public static final Samaya MinValue = new Samaya(1, 1, 1, 0, 0, 0, 0);
-    public static final Samaya MaxValue = new Samaya(9999, 12, 31, 23, 59, 59, 9999999);
+    public static final Samaya MIN_VALUE = new Samaya(1, 1, 1, 0, 0, 0, 0);
+    public static final Samaya MAX_VALUE = new Samaya(9999, 12, 31, 23, 59, 59, 9999999);
+    public static final Samaya EPOCH = new Samaya(1970, 1, 1);
 
     public Samaya(String aDateTime) {
         super(aDateTime);
@@ -37,7 +39,7 @@ public class Samaya extends DateTime{
         // AG: feel backasswards so I'm reverting the way minus works
         return TimeSpan.FromSeconds(time.numSecondsFrom(this));
     }
-
+    
     public Samaya Subtract(TimeSpan timeSpan) {
         return new Samaya(minus(0, 0, timeSpan.Days(), timeSpan.Hours(), timeSpan.Minutes(), timeSpan.Seconds(), DayOverflow.LastDay));
     }
@@ -92,7 +94,7 @@ public class Samaya extends DateTime{
         super(time.getYear(), time.getMonth(), time.getDay(), time.getHour(), time.getMinute(), time.getSecond(), time.getNanoseconds());
     }
 
-    public static Samaya now() {
+    public static Samaya Now() {
         DateTime time = Samaya.now(TimeZone.getDefault());
         return new Samaya(time);
     }
@@ -104,4 +106,18 @@ public class Samaya extends DateTime{
     public Integer Hour() {
         return getHour();
     }
+    
+    public static TimeSpan CurrentTimestamp(){
+    	long unixTime = System.currentTimeMillis()/1000l;
+    	return TimeSpan.FromSeconds(unixTime);
+    }
+    
+    public TimeSpan TimeSpanSinceEpoch(){
+    	return Subtract(EPOCH);
+    }
+    
+    public long Timestamp(){
+    	return TimeSpanSinceEpoch().Ticks()/TimeSpan.TicksPerSecond;
+    }
+    
 }

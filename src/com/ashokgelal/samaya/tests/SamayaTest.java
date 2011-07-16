@@ -190,6 +190,13 @@ public class SamayaTest{
         assertEquals(17, date4.getHour().intValue());
         assertEquals(55, date4.getMinute().intValue());
     }
+    
+    @Test
+    public void testSinceEpoch(){
+    	Samaya date = new Samaya(2011, 7, 16, 20, 51, 25);
+    	long seconds = date.Timestamp();
+    	assertEquals(1310849485, seconds);
+    }
 }
 
 
