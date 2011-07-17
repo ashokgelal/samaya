@@ -195,9 +195,23 @@ public class SamayaTest{
     }
     
     @Test
-    public void testSinceEpoch(){
+    public void testTimestamp(){
     	Samaya date = new Samaya(2011, 7, 16, 20, 51, 25);
     	long seconds = date.Timestamp();
+    	assertEquals(1310849485L, seconds);
+    }
+    
+    @Test
+    public void testTimestampInMilliseconds(){
+    	Samaya date = new Samaya(2011, 7, 16, 20, 51, 25);
+    	long milli = date.TimestampInMilliseconds();
+    	assertEquals(1310849485000L, milli);
+    }
+    
+    @Test
+    public void testTimestampInSeconds(){
+    	Samaya date = new Samaya(2011, 7, 16, 20, 51, 25);
+    	long seconds = date.TimestampInSeconds();
     	assertEquals(1310849485L, seconds);
     }
     

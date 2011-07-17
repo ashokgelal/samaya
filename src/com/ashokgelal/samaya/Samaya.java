@@ -133,6 +133,14 @@ public class Samaya extends DateTime{
     	return TimeSpanSinceEpoch().Ticks()/TimeSpan.TicksPerSecond;
     }
     
+    public long TimestampInSeconds(){
+    	return Timestamp();
+    }
+    
+    public long TimestampInMilliseconds(){
+    	return Timestamp()*1000;
+    }
+    
     public static Samaya FromTimestamp(long milliseconds)
     {
     	return new Samaya(DateTime.forInstant(milliseconds, TimeZone.getDefault()));
