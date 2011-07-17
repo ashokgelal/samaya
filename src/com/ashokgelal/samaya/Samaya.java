@@ -1,6 +1,7 @@
 package com.ashokgelal.samaya;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 
 public class Samaya extends DateTime{
@@ -45,8 +46,20 @@ public class Samaya extends DateTime{
     }
 
     public Samaya Add(TimeSpan timeSpan){
+    	if(timeSpan.Days()>9999)
+    	{
+    		Calendar ca = Calendar.getInstance();
+    		ca.setTimeInMillis((long)timeSpan.TotalMilliseconds());
+    		DateTime time = plus(ca.get(Calendar.YEAR), ca.get(Calendar.MONTH), ca.get(Calendar.DAY_OF_MONTH), ca.get(Calendar.HOUR), ca.get(Calendar.MINUTE), ca.get(Calendar.SECOND), DayOverflow.LastDay);
+    		return new Samaya(time);
+    	}
         DateTime time = plus(0, 0, timeSpan.Days(), timeSpan.Hours(), timeSpan.Minutes(), timeSpan.Seconds(), DayOverflow.LastDay);
         return new Samaya(time);
+    }
+    
+    public Samaya Add(DateTime time)
+    {
+    	return new Samaya(plus(time.getYear(), time.getMonth(), time.getDay(), time.getHour(), time.getMinute(), time.getSecond(), DayOverflow.LastDay));
     }
 
     public Samaya AddDays(double days)
@@ -120,4 +133,8 @@ public class Samaya extends DateTime{
     	return TimeSpanSinceEpoch().Ticks()/TimeSpan.TicksPerSecond;
     }
     
+    public static Samaya FromTimestamp(long milliseconds)
+    {
+    	return new Samaya(DateTime.forInstant(milliseconds, TimeZone.getDefault()));
+    }
 }

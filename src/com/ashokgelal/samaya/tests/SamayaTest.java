@@ -1,5 +1,8 @@
 package com.ashokgelal.samaya.tests;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
 import com.ashokgelal.samaya.Samaya;
 import com.ashokgelal.samaya.TimeSpan;
 import org.junit.Test;
@@ -195,7 +198,19 @@ public class SamayaTest{
     public void testSinceEpoch(){
     	Samaya date = new Samaya(2011, 7, 16, 20, 51, 25);
     	long seconds = date.Timestamp();
-    	assertEquals(1310849485, seconds);
+    	assertEquals(1310849485L, seconds);
+    }
+    
+    @Test
+    public void testTimestampToEpoch(){
+    	Samaya date = Samaya.FromTimestamp(1310867739 * 1000L);
+    	assertEquals(2011, date.getYear().intValue());
+    	assertEquals(7, date.getMonth().intValue());
+    	assertEquals(16, date.getDay().intValue());
+    	assertEquals(19, date.getHour().intValue());
+    	assertEquals(55, date.getMinute().intValue());
+    	assertEquals(39, date.getSecond().intValue());
+    	assertEquals(1310867739000L, date.Milliseconds());
     }
 }
 
