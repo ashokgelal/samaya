@@ -1,8 +1,5 @@
 package com.ashokgelal.samaya.tests;
 
-import java.util.Calendar;
-import java.util.TimeZone;
-
 import com.ashokgelal.samaya.Samaya;
 import com.ashokgelal.samaya.TimeSpan;
 import org.junit.Test;
@@ -196,35 +193,35 @@ public class SamayaTest{
     
     @Test
     public void testTimestamp(){
-    	Samaya date = new Samaya(2011, 7, 16, 20, 51, 25);
+    	Samaya date = new Samaya(2011, 7, 17, 13, 4, 13);
     	long seconds = date.Timestamp();
-    	assertEquals(1310849485L, seconds);
+    	assertEquals(1310929453L, seconds);
     }
     
     @Test
     public void testTimestampInMilliseconds(){
-    	Samaya date = new Samaya(2011, 7, 16, 20, 51, 25);
+    	Samaya date = new Samaya(2011, 7, 17, 13, 4, 13) ;
     	long milli = date.TimestampInMilliseconds();
-    	assertEquals(1310849485000L, milli);
+    	assertEquals(1310929453000L, milli);
     }
     
     @Test
     public void testTimestampInSeconds(){
-    	Samaya date = new Samaya(2011, 7, 16, 20, 51, 25);
+    	Samaya date = new Samaya(2011, 7, 17, 13, 4, 13);
     	long seconds = date.TimestampInSeconds();
-    	assertEquals(1310849485L, seconds);
+    	assertEquals(1310929453L, seconds);
     }
     
     @Test
     public void testTimestampToEpoch(){
-    	Samaya date = Samaya.FromTimestamp(1310867739 * 1000L);
+    	Samaya date = Samaya.FromTimestamp(1310929453056L);
     	assertEquals(2011, date.getYear().intValue());
     	assertEquals(7, date.getMonth().intValue());
-    	assertEquals(16, date.getDay().intValue());
-    	assertEquals(19, date.getHour().intValue());
-    	assertEquals(55, date.getMinute().intValue());
-    	assertEquals(39, date.getSecond().intValue());
-    	assertEquals(1310867739000L, date.Milliseconds());
+    	assertEquals(17, date.getDay().intValue());
+    	assertEquals(13, date.getHour().intValue());
+    	assertEquals(4, date.getMinute().intValue());
+    	assertEquals(13, date.getSecond().intValue());
+    	assertEquals(1310929453056L, date.Milliseconds());
     }
 }
 

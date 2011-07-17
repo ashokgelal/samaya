@@ -1,11 +1,10 @@
 package com.ashokgelal.samaya;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
 public class Samaya extends DateTime{
-    public static final Samaya MIN_VALUE = new Samaya(1, 1, 1, 0, 0, 0, 0);
+	private static final long serialVersionUID = 2098914112990897968L;
+	public static final Samaya MIN_VALUE = new Samaya(1, 1, 1, 0, 0, 0, 0);
     public static final Samaya MAX_VALUE = new Samaya(9999, 12, 31, 23, 59, 59, 9999999);
     public static final Samaya EPOCH = new Samaya(1970, 1, 1);
 
@@ -29,7 +28,7 @@ public class Samaya extends DateTime{
        super(year, month, day, hour, minute, 0, 0);
    }
 
-    private Samaya Subtract(int year, int month, int day, int hour, int minute, int second)
+    public Samaya Subtract(int year, int month, int day, int hour, int minute, int second)
     {
         DateTime time = minus(year, month, day, hour, minute, second, DayOverflow.LastDay);
         return new Samaya(time);
@@ -108,12 +107,12 @@ public class Samaya extends DateTime{
     }
 
     public static Samaya Now() {
-        DateTime time = Samaya.now(TimeZone.getDefault());
+        DateTime time = Samaya.now(Calendar.getInstance().getTimeZone());
         return new Samaya(time);
     }
 
     public long Milliseconds() {
-        return getMilliseconds(TimeZone.getDefault());
+        return getMilliseconds(Calendar.getInstance().getTimeZone());
     }
 
     public Integer Hour() {
@@ -126,11 +125,11 @@ public class Samaya extends DateTime{
     }
     
     public TimeSpan TimeSpanSinceEpoch(){
-    	return Subtract(EPOCH);
+    	return TimeSpan.FromMilliseconds(TimestampInMilliseconds());
     }
     
     public long Timestamp(){
-    	return TimeSpanSinceEpoch().Ticks()/TimeSpan.TicksPerSecond;
+    	return TimestampInMilliseconds()/1000;
     }
     
     public long TimestampInSeconds(){
@@ -138,11 +137,11 @@ public class Samaya extends DateTime{
     }
     
     public long TimestampInMilliseconds(){
-    	return Timestamp()*1000;
+    	return getMilliseconds(Calendar.getInstance().getTimeZone());
     }
     
     public static Samaya FromTimestamp(long milliseconds)
     {
-    	return new Samaya(DateTime.forInstant(milliseconds, TimeZone.getDefault()));
+    	return new Samaya(DateTime.forInstant(milliseconds, Calendar.getInstance().getTimeZone()));
     }
 }
